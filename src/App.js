@@ -1,13 +1,22 @@
 import React from'react';
-import { addGUN } from './redux';
-class App extends React.Component {
+import { connect } from 'react-redux';
+import { addGUN, removeGUN, addGUNAsync } from './redux';
+export class App extends React.Component {
   render() {
-    const store = this.props.store;
-    const num = store.getState();
+    const { num, addGUN, addGUNAsync } = this.props;
     return  <div>  
               <h1>当前store的state: {num}</h1> 
-               <button onClick={() => store.dispatch(addGUN())}>state_add</button>
+               <button onClick={() => addGUN()}> state 增加</button>
+               <button onClick={() => addGUNAsync()}> state 异步</button>
             </div>
   }
 }
-export default App;
+// 将state 放到Props
+const mapStateToProps = (state) => {
+  return { num: state }
+}
+// 将方法 放到 Props
+const actionCreators = { addGUN, removeGUN, addGUNAsync }
+// connect 高阶组件
+App = connect(mapStateToProps, actionCreators)(App)
+export default App; 

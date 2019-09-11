@@ -73,3 +73,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ###### 语法
 const
 const声明创建一个值的只读引用。但这并不意味着它所持有的值是不可变的，只是变量标识符不能重新分配。例如，在引用内容是对象的情况下，这意味着可以改变对象的内容（例如，其参数）。
+### redux
+Redux默认只处理同步，异步任务使用react-thunk中间件
+applyMiddleWare开启中间件
+##### Provider
+应用最外层，传入store即可，只用一次；
+Connect负责从外部获取组件需要的参数；
+Connect可用装饰器方式；
+babel插件支持 npm run eject

@@ -11,3 +11,11 @@ export function addGUN() {
 export function removeGUN() {
   return {type: 'DECRESE'}
 }
+export function addGUNAsync() {
+  return dispatch => {
+    setTimeout(() => {
+    //此处dispatch需要保证addGUN执行 addGUN() instead of addGUN 
+      dispatch(addGUN());
+    },2000)
+  } 
+}
