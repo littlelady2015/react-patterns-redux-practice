@@ -1,7 +1,11 @@
 import React from'react';
 import { connect } from 'react-redux';
 import { addGUN, removeGUN, addGUNAsync } from './redux';
-export class App extends React.Component {
+
+@connect(
+  state=>({ num: state }),
+  { addGUN, removeGUN, addGUNAsync })
+class App extends React.Component {
   render() {
     const { num, addGUN, addGUNAsync } = this.props;
     return  <div>  
@@ -12,11 +16,10 @@ export class App extends React.Component {
   }
 }
 // 将state 放到Props
-const mapStateToProps = (state) => {
-  return { num: state }
-}
+// const mapStateToProps = (state) => {
+//   return { num: state }
+// }
 // 将方法 放到 Props
-const actionCreators = { addGUN, removeGUN, addGUNAsync }
+// const actionCreators = { addGUN, removeGUN, addGUNAsync }
 // connect 高阶组件
-App = connect(mapStateToProps, actionCreators)(App)
 export default App; 
